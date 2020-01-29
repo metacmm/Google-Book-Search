@@ -1,13 +1,24 @@
 import React, { Component } from "react";
 import "./App.css";
-import SearchPage from "./pages/SearchPage";
+import Bookpage from "./pages/SearchContainer";
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <SearchPage />
+      <Router>
+      <div className="container-fluid">
+          <Nav />
+          <Jumbotron />
+          <SearchBar />
+          <Switch >
+              <Route exact path="/" component={} />
+              <List>
+                  <ListItem />
+                  <ListItem />
+              </List>
+          </Switch>
       </div>
+  </Router>
     );
   }
 }

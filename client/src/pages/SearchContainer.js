@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Nav from "../components/Nav";
-import Jumbotron from "../components/Jumbotron";
+
+
 import SearchBar from "../components/SearchBar";
 import { List, ListItem } from "../components/List";
 import API from "../utils/API";
@@ -48,4 +47,4 @@ class SearchContainer extends Component {
     }
 }
 
-export default SearchPage;
+export default SearchContainer;

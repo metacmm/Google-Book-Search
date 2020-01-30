@@ -1,6 +1,9 @@
 import React, { Component } from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
-import Bookpage from "./pages/SearchContainer";
+import Nav from "../components/Nav";
+import Jumbotron from "../components/Jumbotron";
+import SearchContainer from "./pages/SearchContainer";
 
 class App extends Component {
   render() {
@@ -9,13 +12,8 @@ class App extends Component {
       <div className="container-fluid">
           <Nav />
           <Jumbotron />
-          <SearchBar />
           <Switch >
-              <Route exact path="/" component={} />
-              <List>
-                  <ListItem />
-                  <ListItem />
-              </List>
+              <Route exact path="/" component={SearchContainer} />
           </Switch>
       </div>
   </Router>

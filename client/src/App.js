@@ -8,15 +8,13 @@ import SearchContainer from "./pages/SearchContainer";
 class App extends Component {
   render() {
     return (
-      <Router>
+      
       <div className="container-fluid">
           <Nav />
           <Jumbotron />
-          <Switch >
-              <Route exact path="/" component={SearchContainer} />
-          </Switch>
+          <SearchContainer />
       </div>
-  </Router>
+  
     );
   }
 }

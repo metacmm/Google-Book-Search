@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-
-
 import SearchBar from "../components/SearchBar";
 import { List, ListItem } from "../components/List";
 import API from "../utils/API";
@@ -10,18 +8,21 @@ class SearchContainer extends Component {
         books: [],
         title: ""
     }
-    
-    handleSubmit = function(event){
+
+    handleSubmit = event => {
         event.preventDefault();
-        API.getAll(this.state.title).then(function(data){
+        API.getAll(this.state.title).then(bookData => {
+            console.log(bookData.data.items);
             this.setState({
-                books: data.items
+                books: bookData.data.items
             });
         });
     }
 
-    handleInputChange = function(event){
-        const {name, value} = event.target;
+    handleInputChange = event => {
+        console.log(event.target);
+        const { name, value } = event.target;
+        console.log(this);
         this.setState({
             [name]: value
         });
@@ -30,17 +31,26 @@ class SearchContainer extends Component {
     render() {
         return (
             <div>
-                <SearchBar handleSubmit={this.handleSubmit}/>
+                <div className="border p-3 m-2">
+                    <form>
+                        <div className="form-group">
+                            <label for="searchBookInput">Search Book</label>
+                            <input type="text" className="form-control" name="title" id="searchBookInput" value={this.state.value} onChange={this.handleInputChange} />
+                        </div>
+                        <button type="submit" className="btn btn-primary" onClick={this.handleSubmit}>Search</button>
+                    </form>
+                </div>
                 <List>
-                    {this.state.books.map(element => {
-                        return new {
-                            "title": element.volumeInfo.title,
-                            "author": element.volumeInfo.authors.join(","),
-                            "description": element.description,
-                            "image": element.imageLinks.thumbnail,
-                            "link":element.selfLink
-                        }
-                    })}
+                    {this.state.books.map(element =>
+                        <ListItem
+                            key={element.volumeInfo.id}
+                            title={element.volumeInfo.title}
+                            author={element.volumeInfo.hasOwnProperty("authors")? element.volumeInfo.authors.join(",") : ""}
+                            description={element.description}
+                            image={element.volumeInfo.imageLinks.thumbnail}
+                            link={element.selfLink}
+                        />
+                    )}
                 </List>
             </div>
         );

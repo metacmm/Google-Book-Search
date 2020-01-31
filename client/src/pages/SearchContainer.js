@@ -46,9 +46,9 @@ class SearchContainer extends Component {
                             key={element.volumeInfo.id}
                             title={element.volumeInfo.title}
                             author={element.volumeInfo.hasOwnProperty("authors")? element.volumeInfo.authors.join(",") : ""}
-                            description={element.description}
+                            description={element.volumeInfo.description}
                             image={element.volumeInfo.imageLinks.thumbnail}
-                            link={element.selfLink}
+                            link={element.volumeInfo.previewLink}
                         />
                     )}
                 </List>

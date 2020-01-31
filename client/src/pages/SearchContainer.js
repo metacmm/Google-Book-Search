@@ -21,9 +21,9 @@ class SearchContainer extends Component {
     }
 
     handleInputChange = function(event){
-        const inputValue = event.target.value;
+        const {name, value} = event.target;
         this.setState({
-            title: inputValue
+            [name]: value
         });
     }
 

@@ -21,16 +21,18 @@ class SearchContainer extends Component {
     }
 
     handleInputChange = function(event){
-        const inputValue = event.target.value;
+        console.log(event.target);
+        const {name, value} = event.target;
+        console.log(this);
         this.setState({
-            title: inputValue
+            [name]: value
         });
     }
 
     render() {
         return (
             <div>
-                <SearchBar handleSubmit={this.handleSubmit}/>
+                <SearchBar value={this.state.value} handleSubmit={this.handleSubmit} handleInputChange={this.handleInputChange}/>
                 <List>
                     {this.state.books.map(element => {
                         return new {

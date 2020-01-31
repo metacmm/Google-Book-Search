@@ -14,7 +14,15 @@ class SearchContainer extends Component {
         API.getAll(this.state.title).then(bookData => {
             console.log(bookData.data.items);
             this.setState({
-                books: bookData.data.items
+                books: bookData.data.items.map(item => 
+                    ({
+                        "title": item.volumeInfo.title,
+                        "author": item.volumeInfo.hasOwnProperty("authors")? item.volumeInfo.authors.join(",") : "",
+                        "description": item.volumeInfo.description,
+                        "image": item.volumeInfo.imageLinks.thumbnail,
+                        "link": item.volumeInfo.previewLink
+                    })
+                )
             });
         });
     }
@@ -25,6 +33,15 @@ class SearchContainer extends Component {
         console.log(this);
         this.setState({
             [name]: value
+        });
+    }
+
+    handleSaveBook = event => {
+        console.log(event.target);
+        const index = event.target.id;
+        console.log(index);
+        API.saveBook(this.state.books[index]).then(bookData => {
+            console.log(bookData);
         });
     }
 
@@ -41,14 +58,12 @@ class SearchContainer extends Component {
                     </form>
                 </div>
                 <List>
-                    {this.state.books.map(element =>
+                    {this.state.books.map((element,index) =>
                         <ListItem
-                            key={element.volumeInfo.id}
-                            title={element.volumeInfo.title}
-                            author={element.volumeInfo.hasOwnProperty("authors")? element.volumeInfo.authors.join(",") : ""}
-                            description={element.volumeInfo.description}
-                            image={element.volumeInfo.imageLinks.thumbnail}
-                            link={element.volumeInfo.previewLink}
+                            {...element}
+                            key = {index}
+                            id = {index}
+                            handleSaveBook = {this.handleSaveBook}
                         />
                     )}
                 </List>

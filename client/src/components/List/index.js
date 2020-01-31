@@ -13,9 +13,9 @@ export function ListItem(props) {
         <div className="border p-4 m-2">
             <div className="row d-flex justify-content-between">
                 <h5>{props.title}</h5>
-                <div className="d-flex justify-content-end px-2">
+                <div className="d-flex px-2">
                     <button><a href={props.link}>view</a></button>
-                    <button>Save</button>
+                    <button id={props.id} onClick={props.handleSaveBook}>save</button>
                 </div>
             </div>
             <div className="row">

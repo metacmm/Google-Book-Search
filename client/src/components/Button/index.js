@@ -15,7 +15,7 @@ export function ButtonSave(props){
     return(
         <button 
             id={props.id} 
-            onChange={props.handleClickEvent} 
+            onClick={props.handleClickEvent} 
             type="radio" 
             className="btn btn-primary" 
             data-toggle="button">

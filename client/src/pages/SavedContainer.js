@@ -15,9 +15,7 @@ class SavedContainer extends Component{
     
     handleDeleteBook = event => {
         const id = event.target.id;
-        console.log(event.target);
         API.deleteBook(id).then(bookData =>{
-            console.log(bookData);
             this.loadSavedBook();
             }
         );
@@ -26,7 +24,6 @@ class SavedContainer extends Component{
 
     loadSavedBook = () => {
         API.getSaved().then (bookData => {
-            console.log(bookData);
             this.setState({
                 books: bookData.data
             })

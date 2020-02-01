@@ -12,7 +12,6 @@ class SearchContainer extends Component {
     handleSubmit = event => {
         event.preventDefault();
         API.getAll(this.state.title).then(bookData => {
-            console.log(bookData);
             this.setState({
                 books: bookData.data.items.map(item => 
                     ({
@@ -28,21 +27,15 @@ class SearchContainer extends Component {
     }
 
     handleInputChange = event => {
-        console.log(event.target);
         const { name, value } = event.target;
-        console.log(this);
         this.setState({
             [name]: value
         });
     }
 
     handleSaveBook = event => {
-        console.log(event.target);
         const index = event.target.id;
-        console.log(index);
-        API.saveBook(this.state.books[index]).then(bookData => {
-            console.log(bookData);
-        });
+        API.saveBook(this.state.books[index]);
     }
 
     render() {

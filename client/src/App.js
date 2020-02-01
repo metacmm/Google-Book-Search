@@ -9,13 +9,16 @@ import SavedContainer from "./pages/SavedContainer";
 class App extends Component {
   render() {
     return (
-      
-      <div className="container-fluid">
-          <Nav />
-          <Jumbotron />
-          <SavedContainer />
-      </div>
-  
+      <Router>
+        <div className="container-fluid">
+            <Nav />
+            <Jumbotron />
+            <Switch>
+            <Route exact path="/save" component={SavedContainer} />
+            <Route component={SearchContainer} />
+            </Switch>
+        </div>
+      </Router>
     );
   }
 }

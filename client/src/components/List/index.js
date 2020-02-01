@@ -14,8 +14,10 @@ export function ListItem(props) {
     return (
         <div className="border p-4 m-2">
             <div className="row d-flex justify-content-between">
+                <div className="col-11">
                 <h5>{props.title}</h5>
-                <div className="d-flex px-2">
+                </div>
+                <div className="d-flex px-2 col-1">
                     <button><a href={props.link}>view</a></button>
                     {button}
                 </div>

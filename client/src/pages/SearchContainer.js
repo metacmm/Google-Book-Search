@@ -17,9 +17,9 @@ class SearchContainer extends Component {
                 books: bookData.data.items.map(item => 
                     ({
                         "title": item.volumeInfo.title,
-                        "author": item.volumeInfo.hasOwnProperty("authors")? item.volumeInfo.authors.join(",") : "",
+                        "author": item.volumeInfo.authors? item.volumeInfo.authors.join(",") : "",
                         "description": item.volumeInfo.description,
-                        "image": item.volumeInfo.imageLinks.thumbnail,
+                        "image": item.volumeInfo.imageLinks? item.volumeInfo.imageLinks.thumbnail : "",
                         "link": item.volumeInfo.previewLink
                     })
                 )

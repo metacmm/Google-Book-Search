@@ -2,7 +2,7 @@ import axios from "axios";
 
 export default{
     getAll: function(title){
-        const apiKey = process.env.GOOGLE_BOOK_APIKEY;
+        const apiKey = process.env.GOOGLE_BOOK_APIKEY||"AIzaSyAFwzb5MyFZbIsF7kS0bfPF0Be2ZYGxnGY";
         const url = `https://www.googleapis.com/books/v1/volumes?q=${title}+intitle&key=${apiKey}`;
         return axios.get(url);
     },

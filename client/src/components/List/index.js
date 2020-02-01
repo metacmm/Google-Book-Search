@@ -1,5 +1,5 @@
 import React from "react";
-import {ButtonSave, ButtonDelete} from "../Button";
+import { ButtonSave, ButtonDelete } from "../Button";
 
 export function List({ children }) {
     return (
@@ -9,16 +9,16 @@ export function List({ children }) {
 }
 
 export function ListItem(props) {
-    const button = props.isSavePage? <ButtonDelete id={props.id} handleClickEvent={props.handleDeleteBook}/> :
-    <ButtonSave id={props.id} handleClickEvent={props.handleSaveBook}/>;
+    const button = props.isSavePage ? <ButtonDelete id={props.id} handleClickEvent={props.handleDeleteBook} /> :
+        <ButtonSave id={props.id} handleClickEvent={props.handleSaveBook} />;
     return (
         <div className="border p-4 m-2">
             <div className="row d-flex justify-content-between">
-                <div className="col-11">
-                <h5>{props.title}</h5>
+                <div className="col-10">
+                    <h5>{props.title}</h5>
                 </div>
-                <div className="d-flex px-2 col-1">
-                    <button><a href={props.link}>view</a></button>
+                <div className="col-2 d-flex justify-content-end">
+                    <a className="btn btn-secondary mx-1 active" role="button" href={props.link} ariaPressed="true">view</a>
                     {button}
                 </div>
             </div>

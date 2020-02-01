@@ -12,15 +12,15 @@ class SearchContainer extends Component {
     handleSubmit = event => {
         event.preventDefault();
         API.getAll(this.state.title).then(bookData => {
-            console.log(bookData.data.items);
+            console.log(bookData);
             this.setState({
                 books: bookData.data.items.map(item => 
                     ({
-                        "title": item.volumeInfo.title,
+                        "title": item.volumeInfo.title? item.volumeInfo.title : "",
                         "author": item.volumeInfo.authors? item.volumeInfo.authors.join(",") : "",
-                        "description": item.volumeInfo.description,
+                        "description": item.volumeInfo.description? item.volumeInfo.description : "",
                         "image": item.volumeInfo.imageLinks? item.volumeInfo.imageLinks.thumbnail : "",
-                        "link": item.volumeInfo.previewLink
+                        "link": item.volumeInfo.previewLink? item.volumeInfo.previewLink : "#"
                     })
                 )
             });

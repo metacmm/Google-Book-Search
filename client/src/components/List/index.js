@@ -1,5 +1,5 @@
 import React from "react";
-import { PromiseProvider } from "mongoose";
+import {ButtonSave, ButtonDelete} from "../Button";
 
 export function List({ children }) {
     return (
@@ -9,13 +9,15 @@ export function List({ children }) {
 }
 
 export function ListItem(props) {
+    const button = props.isSavePage? <ButtonDelete id={props.id} handleClickEvent={props.handleDeleteBook}/> :
+    <ButtonSave id={props.id} handleClickEvent={props.handleSaveBook}/>;
     return (
         <div className="border p-4 m-2">
             <div className="row d-flex justify-content-between">
                 <h5>{props.title}</h5>
                 <div className="d-flex px-2">
                     <button><a href={props.link}>view</a></button>
-                    <button id={props.id} onClick={props.handleSaveBook}>save</button>
+                    {button}
                 </div>
             </div>
             <div className="row">

@@ -4,6 +4,7 @@ import "./App.css";
 import Nav from "./components/Nav";
 import Jumbotron from "./components/Jumbotron";
 import SearchContainer from "./pages/SearchContainer";
+import SavedContainer from "./pages/SavedContainer";
 
 class App extends Component {
   render() {
@@ -12,7 +13,7 @@ class App extends Component {
       <div className="container-fluid">
           <Nav />
           <Jumbotron />
-          <SearchContainer />
+          <SavedContainer />
       </div>
   
     );
